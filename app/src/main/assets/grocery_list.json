@@ -1,0 +1,14 @@
+[
+  {
+    "id": 2,
+    "name": "Goldfish Crackers - Family Sized Cheddar",
+    "price": 7.97,
+    "image": "goldfish_crackers_ch_fm.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Rice Krispies Squares",
+    "price": 7.98,
+    "image": "rice_krispies_squares.jpg"
+  }
+]

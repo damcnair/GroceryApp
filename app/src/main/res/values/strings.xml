@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">GroceryApp</string>
+    <string name="image_add">Search by Image</string>
+    <string name="barcode_add">Search by Barcode</string>
+</resources>
