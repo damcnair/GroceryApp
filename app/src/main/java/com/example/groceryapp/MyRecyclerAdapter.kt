@@ -25,17 +25,18 @@ class MyRecyclerAdapter(private val myDataset: ArrayList<GroceryItem>, private v
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.recycler_item_layout, parent, false) as View
         // LW set the view's size, margins, paddings and layout parameters
-        val lp = view.getLayoutParams()
+        val lp = view.layoutParams
         lp.height = parent.measuredHeight/5
-        view.setLayoutParams(lp)
+        view.layoutParams = lp
         return MyViewHolder(view)
     }
 
     // Replace the contents of a view (invoked by the layout manager)
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.view.findViewById<TextView>(R.id.textViewRecyclerItem).text = myDataset[position].name + "\n$" + myDataset[position].price.toString()
+        holder.view.findViewById<TextView>(R.id.textViewRecyclerItem).text = myDataset[position].name + "\n$" + myDataset[position].price.toString() + "\nQuantity: " + myDataset[position].quantity.toString() + "\nTotal: " + (myDataset[position].price * myDataset[position].quantity).toString()
 
         val uri = context.resources.getIdentifier(context.packageName+":drawable/"+myDataset[position].image, null, null)
+        //val uri = context.resources.getIdentifier(context.packageName+":drawable/goldfish_crackers_ch", null, null)
         holder.view.findViewById<ImageView>(R.id.imageViewRecyclerItem).setImageResource(uri)
     }
 

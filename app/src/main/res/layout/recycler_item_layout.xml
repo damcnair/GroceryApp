@@ -7,14 +7,17 @@
     <ImageView
         android:id="@+id/imageViewRecyclerItem"
         android:layout_width="0dp"
-        android:layout_height="150dp"
+        android:layout_height="300px"
         android:layout_weight="1"
-        app:srcCompat="@drawable/goldfish_crackers_ch" />
+        app:srcCompat="@drawable/goldfish_crackers_ch"
+        app:layout_constraintStart_toStartOf="parent"/>
 
     <TextView
         android:id="@+id/textViewRecyclerItem"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="TextView" />
+        android:text="TextView"
+        app:layout_constraintStart_toEndOf="@+id/imageViewRecyclerItem"
+        app:layout_constraintEnd_toEndOf="parent"/>
 </LinearLayout>
