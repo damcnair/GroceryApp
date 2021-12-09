@@ -4,6 +4,7 @@
     <string name="barcode_add">Search by Barcode</string>
     <string name="store_name">Your Grocery Cart:</string>
     <string name="title_activity_user_profile">UserProfile</string>
+    <string name="title_activity_barcode">Scan Barcode</string>
     <string name="profile_title">Your Profile</string>
     <string name="back_button">Back</string>
     <string name="view_profile">View Profile</string>

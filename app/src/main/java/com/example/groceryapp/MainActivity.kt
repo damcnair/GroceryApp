@@ -88,7 +88,9 @@ class MainActivity : AppCompatActivity() {
             R.id.buttonBarcode->{
                 //Scan barcode through image
 
-                val intent = Intent(this, BarcodeScanner::class.java).apply {}
+                val intent = Intent(this, BarcodeScanner::class.java).apply {
+
+                }
                 startActivity(intent)
 
                 }

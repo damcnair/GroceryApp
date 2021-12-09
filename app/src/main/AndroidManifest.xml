@@ -10,6 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GroceryApp">
         <activity
+            android:name=".BarcodeScanner"
+            android:exported="false"
+            android:label="@string/title_activity_barcode"
+            android:theme="@style/Theme.GroceryApp.NoActionBar" />
+        <activity
             android:name=".UserProfile"
             android:exported="false"
             android:label="@string/title_activity_user_profile"
