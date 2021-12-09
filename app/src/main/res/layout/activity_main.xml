@@ -23,7 +23,7 @@
         android:layout_height="68dp"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="17dp"
-        android:onClick="onButtonBarcode"
+        android:onClick="onButtonClick"
         android:text="@string/barcode_add"
         app:layout_constraintBottom_toTopOf="@+id/btnCheckout"
         app:layout_constraintStart_toStartOf="parent" />
@@ -88,4 +88,5 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/textView"
         app:layout_constraintTop_toBottomOf="@+id/textViewRecycle" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

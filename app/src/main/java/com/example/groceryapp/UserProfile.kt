@@ -26,6 +26,7 @@ class UserProfile : AppCompatActivity() {
         val inputcc : EditText = findViewById(R.id.inputcc) as EditText
         val customer:ArrayList<Customer> = intent.getSerializableExtra("customer") as ArrayList<Customer>
         for (c in customer){
+            //find current customer and display, we only have 1 so its fine
             inputfname.setText(c.fname)
             inputlname.setText(c.lname)
             inputaddress.setText(c.address)

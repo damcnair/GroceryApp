@@ -5,12 +5,17 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.io.IOException
+import com.google.mlkit.vision.barcode.BarcodeScanning
+import com.google.mlkit.vision.common.InputImage
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 
 class MainActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
@@ -81,8 +86,14 @@ class MainActivity : AppCompatActivity() {
                 }
 
             R.id.buttonBarcode->{
+                //Scan barcode through image
+
+                val intent = Intent(this, BarcodeScanner::class.java).apply {}
+                startActivity(intent)
 
                 }
+
+
             R.id.buttonProfile->{
                 val intent = Intent(this, UserProfile::class.java).apply {
                     putExtra("customer",customer)
