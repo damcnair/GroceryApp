@@ -2,7 +2,7 @@
     <string name="app_name">GroceryApp</string>
     <string name="image_add">Search by Image</string>
     <string name="barcode_add">Search by Barcode</string>
-    <string name="store_name">Demo Store Items:</string>
+    <string name="store_name">Your Grocery Cart:</string>
     <string name="title_activity_user_profile">UserProfile</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
