@@ -17,7 +17,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var viewAdapter: RecyclerView.Adapter<*>
     private lateinit var viewManager: RecyclerView.LayoutManager
 
+    public lateinit var customer:ArrayList<Customer>
+
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
@@ -45,6 +48,14 @@ class MainActivity : AppCompatActivity() {
             // specify an viewAdapter (see also next example)
             adapter = viewAdapter
         }
+        customer=ArrayList<Customer>()
+        //MAKE OUR ONLY CUSTOMER :(
+        val firstname ="Boris"
+        val lastname = "TheAnimal"
+        val address = "123 Carnival Lane"
+        val cc = "************9999"
+        var data = Customer(firstname,lastname,address,cc)
+        customer.add(data)
     }
 
     private fun getJSONDataFromAsset(context: Context, filename: String): String? {
@@ -73,7 +84,9 @@ class MainActivity : AppCompatActivity() {
 
                 }
             R.id.buttonProfile->{
-                val intent = Intent(this, UserProfile::class.java).apply {}
+                val intent = Intent(this, UserProfile::class.java).apply {
+                    putExtra("customer",customer)
+                }
                 startActivity(intent)
 
                 }

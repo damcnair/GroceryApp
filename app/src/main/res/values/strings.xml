@@ -8,4 +8,10 @@
     <string name="back_button">Back</string>
     <string name="view_profile">View Profile</string>
     <string name="checkout_cart">Checkout</string>
+    <string name="fname">First Name</string>
+    <string name="lname">Last Name</string>
+    <string name="age">Age</string>
+    <string name="ccinfo">Current Credit Card</string>
+    <string name="address">Address</string>
+
 </resources>
