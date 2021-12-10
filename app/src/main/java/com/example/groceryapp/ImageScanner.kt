@@ -18,21 +18,36 @@ import android.widget.Button
 import java.io.IOException
 import android.net.Uri
 import android.provider.MediaStore
+//import android.graphics.drawable.AnimationDrawable
 
 private val pickImage = 100
 private var imageUri: Uri? = null
-
+//private lateinit var frameAnimation :AnimationDrawable
+//private lateinit var scanButton:Button
 private lateinit var imageImage: ImageView
+
 class ImageScanner : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_image_scanner)
+        //val img:ImageView = findViewById(R.id.imgLoad2) as ImageView
+       // img.setBackgroundResource(R.drawable.loading)
+        //frameAnimation = img.background as AnimationDrawable
+       // frameAnimation.start()
 
+
+       // scanButton = findViewById(R.id.buttonScan) as Button
+       // val waitLabel : TextView = findViewById(R.id.textIWait2) as TextView
         imageImage = findViewById(R.id.imageView2) as ImageView
         val uploadButton: Button = findViewById(R.id.button) as Button
+
         uploadButton.setOnClickListener{
             val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
             startActivityForResult(gallery, pickImage)
+          //  waitLabel.setText("Ready to Scan!")
+            //uploadButton.setEnabled(false)
+           // img.setVisibility(View.GONE)
+            //scanButton.setEnabled(true)
         }
 
     }
@@ -41,7 +56,7 @@ class ImageScanner : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == RESULT_OK && requestCode == pickImage) {
             imageUri = data?.data
-            var uriBitmap:Bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), imageUri);
+            var uriBitmap:Bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), imageUri)
 
             imageImage.setImageBitmap(uriBitmap)
 

@@ -75,8 +75,8 @@ class MainActivity : AppCompatActivity() {
     fun onButtonClick(view: View) {
         when(view.id) {
             R.id.buttonImage->{
-                val intent = Intent(this, TextScanner::class.java).apply{}
-                startActivity(intent)
+                //val intent = Intent(this, TextScanner::class.java).apply{}
+               // startActivity(intent)
                 }
 
             R.id.buttonBarcode->{
