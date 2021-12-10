@@ -22,4 +22,5 @@
     <string name="button_scan_image">Scan Image</string>
     <string name="upload_barcode">Upload New Barcode</string>
     <string name="upload_image">Upload New Image</string>
+    <string name="wait">Waiting for upload...</string>
 </resources>

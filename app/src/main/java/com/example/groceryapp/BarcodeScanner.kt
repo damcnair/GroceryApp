@@ -20,6 +20,7 @@ import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.graphics.drawable.AnimationDrawable
 
 class BarcodeScanner:AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
@@ -29,17 +30,32 @@ class BarcodeScanner:AppCompatActivity() {
     private val pickImage = 100
     private var imageUri: Uri? = null
     private lateinit var barcodeImage: ImageView
-
+    private lateinit var frameAnimation :AnimationDrawable
+    private lateinit var scanButton:Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.barcode_scanner)
+
+        scanButton = findViewById(R.id.buttonScan) as Button
+        val img:ImageView = findViewById(R.id.imgLoad) as ImageView
+        img.setBackgroundResource(R.drawable.loading)
+        frameAnimation = img.background as AnimationDrawable
+        frameAnimation.start()
+
         barcodeImage = findViewById(R.id.imgBarcode) as ImageView
         val uploadButton: Button = findViewById(R.id.buttonUpload) as Button
-
+        val waitLabel : TextView = findViewById(R.id.textIWait) as TextView
         uploadButton.setOnClickListener{
             val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
             startActivityForResult(gallery, pickImage)
+            frameAnimation.stop()
+            waitLabel.setText("Ready to Scan!")
+            uploadButton.setEnabled(false)
+            img.setVisibility(View.GONE)
+            scanButton.setEnabled(true)
         }
+        //Animation start
+
 
 
     }
@@ -78,6 +94,8 @@ class BarcodeScanner:AppCompatActivity() {
             R.id.buttonScan -> {
                 val barcodeImage: ImageView = findViewById(R.id.imgBarcode) as ImageView
                 barcodeImage.buildDrawingCache()
+
+
 
                 var myBitmap:Bitmap = barcodeImage.getDrawingCache()
                 var textStatus: TextView = findViewById(R.id.txtStatus) as TextView

@@ -7,39 +7,40 @@
 
     <ImageView
         android:id="@+id/imgBarcode"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="390dp"
+        android:layout_height="196dp"
         android:layout_marginStart="102dp"
-        android:layout_marginTop="93dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="103dp"
         android:adjustViewBounds="true"
         android:scaleType="fitXY"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonUpload"
-        app:srcCompat="@drawable/barcode2" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonUpload" />
 
     <Button
         android:id="@+id/buttonScan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="170dp"
-        android:layout_marginTop="96dp"
-        android:layout_marginEnd="147dp"
+        android:layout_width="405dp"
+        android:layout_height="105dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginBottom="8dp"
+        android:enabled="false"
         android:onClick="onButtonClick"
         android:text="@string/scan"
+        app:layout_constraintBottom_toTopOf="@+id/textItem2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.701"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgBarcode" />
+        app:layout_constraintTop_toBottomOf="@+id/textIWait" />
 
     <TextView
         android:id="@+id/txtStatus"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="182dp"
-        android:layout_marginTop="408dp"
+        android:layout_marginTop="420dp"
         android:layout_marginEnd="229dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -50,40 +51,64 @@
         android:id="@+id/textItem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="200dp"
-        android:layout_marginTop="476dp"
-        android:layout_marginEnd="211dp"
+        android:layout_marginStart="96dp"
+        android:layout_marginBottom="108dp"
         android:textSize="20sp"
         android:textStyle="italic"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.486"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textItem2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="26dp"
-        android:layout_marginTop="23dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:text="@string/scan_barcode"
         android:textSize="20sp"
         android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonScan" />
 
-    <Button
-        android:id="@+id/buttonUpload"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="154dp"
-        android:layout_marginTop="67dp"
-        android:layout_marginEnd="163dp"
-        android:text="@string/upload_barcode"
+    <TextView
+        android:id="@+id/textIWait"
+        android:layout_width="409dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginBottom="4dp"
+        android:text="@string/wait"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toTopOf="@+id/buttonScan"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgLoad" />
+
+    <Button
+        android:id="@+id/buttonUpload"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="67dp"
+        android:text="@string/upload_barcode"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imgLoad"
+        android:layout_width="57dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="192dp"
+        android:layout_marginTop="26dp"
+        android:layout_marginEnd="219dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgBarcode"
+        tools:srcCompat="@drawable/tile000" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
