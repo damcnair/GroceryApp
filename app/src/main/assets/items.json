@@ -1,18 +1,18 @@
 [
   {
     "id": 1,
-    "name": "Goldfish Crackers - Cheddar",
+    "name": "Fruit Gushers",
     "price": 2.75,
     "quantity": 1928,
-    "image": "goldfish_crackers_ch",
+    "image": "gushers",
     "barcode": "200140017095"
   },
   {
     "id": 2,
-    "name": "Goldfish Crackers - Family Sized Cheddar",
+    "name": "Kirlkand Trail Mix",
     "price": 7.97,
     "quantity": 14423,
-    "image": "goldfish_crackers_ch_fm",
+    "image": "trailmix",
     "barcode": "200140026958"
   },
   {

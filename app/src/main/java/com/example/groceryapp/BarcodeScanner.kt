@@ -67,7 +67,7 @@ class BarcodeScanner:AppCompatActivity() {
 
                         result = returnItem(barcodeString)
                         println("FOUND" + result.name)
-                        textItem.setText("Found Item: " + result.name)
+                        textItem.setText("Found Item: " + result.name+"\nPrice: $"+result.price +"\nIn Stock: "+result.quantity)
                         // Task completed successfully
                     }
                     .addOnFailureListener {
