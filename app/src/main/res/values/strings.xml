@@ -6,6 +6,7 @@
     <string name="title_activity_user_profile">UserProfile</string>
     <string name="title_activity_barcode">Scan Barcode</string>
     <string name="title_activity_text">Scan Image for Text</string>
+    <string name="title_activity_image">Scan Image for Object</string>
     <string name="profile_title">Your Profile</string>
     <string name="back_button">Back</string>
     <string name="view_profile">View Profile</string>
@@ -25,4 +26,7 @@
     <string name="upload_image">Upload New Image</string>
     <string name="wait">Waiting for upload...</string>
     <string name="scan_image">Scan Image to View Product Information</string>
+    <string name="wait_label_image_scan">Ready to Scan!</string>
+    <string name="image_scan_product_text">Found item: %1$s\nPrice: %2$s\nIn Stock: %3$d</string>
+    <string name="image_scan_toast_text">Sorry we do not sell that type of item!</string>
 </resources>

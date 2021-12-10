@@ -19,32 +19,34 @@ import java.io.IOException
 import android.net.Uri
 import android.provider.MediaStore
 import android.graphics.drawable.AnimationDrawable
+import java.text.NumberFormat
+import java.util.*
 
 private val pickImage = 100
 private var imageUri: Uri? = null
-private lateinit var frameAnimation :AnimationDrawable
-private lateinit var scanButton:Button
+private lateinit var frameAnimation: AnimationDrawable
+private lateinit var scanButton: Button
 private lateinit var imageImage: ImageView
 
 class ImageScanner : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_image_scanner)
-        val img:ImageView = findViewById(R.id.imgLoad2) as ImageView
+        val img: ImageView = findViewById(R.id.imgLoad2) as ImageView
         img.setBackgroundResource(R.drawable.loading)
         frameAnimation = img.background as AnimationDrawable
         frameAnimation.start()
 
 
         scanButton = findViewById(R.id.btnScanImage) as Button
-        val waitLabel : TextView = findViewById(R.id.textIWait2) as TextView
+        val waitLabel: TextView = findViewById(R.id.textIWait2) as TextView
         imageImage = findViewById(R.id.imageView2) as ImageView
         val uploadButton: Button = findViewById(R.id.button) as Button
 
-        uploadButton.setOnClickListener{
+        uploadButton.setOnClickListener {
             val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
             startActivityForResult(gallery, pickImage)
-            waitLabel.setText("Ready to Scan!")
+            waitLabel.setText(R.string.wait_label_image_scan)
             uploadButton.setEnabled(false)
             img.setVisibility(View.GONE)
             scanButton.setEnabled(true)
@@ -56,19 +58,20 @@ class ImageScanner : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == RESULT_OK && requestCode == pickImage) {
             imageUri = data?.data
-            var uriBitmap:Bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), imageUri)
+            var uriBitmap: Bitmap =
+                MediaStore.Images.Media.getBitmap(this.getContentResolver(), imageUri)
 
             imageImage.setImageBitmap(uriBitmap)
 
 
-
         }
     }
+
     fun onButtonClick(view: View) {
         val imageImage: ImageView = findViewById(R.id.imageView2) as ImageView
         imageImage.buildDrawingCache()
 
-        var myBitmap:Bitmap = imageImage.getDrawingCache()
+        var myBitmap: Bitmap = imageImage.getDrawingCache()
         //get item textview
         val textItem: TextView = findViewById<TextView>(R.id.txtViewScannedItemFound)
         //get InputImage
@@ -104,14 +107,20 @@ class ImageScanner : AppCompatActivity() {
                             )
                         }
                         println("found item ${label.text}")
-                        textItem.text =
-                            "Found item: ${item!!.name}\nPrice: $${item!!.price}\nIn Stock: ${item!!.quantity}"
+
+                        textItem.text = getString(
+                            R.string.image_scan_product_text,
+                            item!!.name,
+                            NumberFormat.getCurrencyInstance(Locale.getDefault())
+                                .format(item!!.price),
+                            item!!.quantity
+                        )
                     }
                 }
                 if (!foundItemInList) {
                     Toast.makeText(
                         this,
-                        "Sorry we do not sell that type of item!",
+                        R.string.image_scan_toast_text,
                         Toast.LENGTH_SHORT
                     ).show()
                 }
