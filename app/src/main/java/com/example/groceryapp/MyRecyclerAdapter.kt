@@ -33,7 +33,7 @@ class MyRecyclerAdapter(private val myDataset: ArrayList<GroceryItem>, private v
 
     // Replace the contents of a view (invoked by the layout manager)
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.view.findViewById<TextView>(R.id.textViewRecyclerItem).text = myDataset[position].name + "\n$" + myDataset[position].price.toString() + "\nQuantity: " + myDataset[position].quantity.toString() + "\nTotal: " + (myDataset[position].price * myDataset[position].quantity).toString()
+        holder.view.findViewById<TextView>(R.id.textViewRecyclerItem).text = myDataset[position].name + "\nPrice: $" + myDataset[position].price.toString() + "\nQuantity In Stock: " + myDataset[position].quantity.toString()
 
         val uri = context.resources.getIdentifier(context.packageName+":drawable/"+myDataset[position].image, null, null)
         //val uri = context.resources.getIdentifier(context.packageName+":drawable/goldfish_crackers_ch", null, null)

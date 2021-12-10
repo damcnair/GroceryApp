@@ -3,7 +3,7 @@
     "id": 1,
     "name": "Goldfish Crackers - Cheddar",
     "price": 2.75,
-    "quantity": 0,
+    "quantity": 1928,
     "image": "goldfish_crackers_ch",
     "barcode": "200140017095"
   },
@@ -11,7 +11,7 @@
     "id": 2,
     "name": "Goldfish Crackers - Family Sized Cheddar",
     "price": 7.97,
-    "quantity": 0,
+    "quantity": 14423,
     "image": "goldfish_crackers_ch_fm",
     "barcode": "200140026958"
   },
@@ -19,7 +19,7 @@
     "id": 3,
     "name": "Goldfish Crackers - Flavour Blasted",
     "price": 2.97,
-    "quantity": 0,
+    "quantity": 1903,
     "image": "goldfish_crackers_fb",
     "barcode": "200140008290"
   },
@@ -27,7 +27,7 @@
     "id": 4,
     "name": "Rice Krispies Squares",
     "price": 7.98,
-    "quantity": 0,
+    "quantity": 5512,
     "image": "rice_krispies_squares",
     "barcode": "064100120334"
   }

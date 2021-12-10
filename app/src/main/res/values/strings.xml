@@ -2,7 +2,7 @@
     <string name="app_name">GroceryApp</string>
     <string name="image_add">Search by Image</string>
     <string name="barcode_add">Search by Barcode</string>
-    <string name="store_name">Your Grocery Cart:</string>
+    <string name="store_name">Items in Our Store:</string>
     <string name="title_activity_user_profile">UserProfile</string>
     <string name="title_activity_barcode">Scan Barcode</string>
     <string name="profile_title">Your Profile</string>
@@ -15,4 +15,7 @@
     <string name="ccinfo">Current Credit Card</string>
     <string name="address">Address</string>
     <string name="scan">Scan This Barcode</string>
+    <string name="additem">Add Item</string>
+    <string name="enter_qyt">Enter Qty</string>
+    <string name="scan_barcode">Scan Barcode to View Product Information</string>
 </resources>

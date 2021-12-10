@@ -21,7 +21,7 @@ class BarcodeScanner:AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var viewAdapter: RecyclerView.Adapter<*>
     private lateinit var viewManager: RecyclerView.LayoutManager
-
+    private var result: GroceryItem = GroceryItem(0,"",0.0f, 0,"","")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.barcode_scanner)
@@ -57,25 +57,23 @@ class BarcodeScanner:AppCompatActivity() {
                 val image = InputImage.fromBitmap(myBitmap, 0)
                 // Set up the barcode scanner
                 val scanner = BarcodeScanning.getClient()
-                var barcodeString : String = ""
+                var barcodeString: String = ""
+
                 // processing the image
                 val result = scanner.process(image)
                     .addOnSuccessListener { barcodes ->
                         textStatus.setText("Found Barcode: " + barcodes[0].rawValue)
-                        var barcodeString : String = barcodes[0].rawValue
-                        val result: GroceryItem
+                        var barcodeString: String = barcodes[0].rawValue
+
                         result = returnItem(barcodeString)
-                        println("FOUND" +result.name)
+                        println("FOUND" + result.name)
                         textItem.setText("Found Item: " + result.name)
-                            // Task completed successfully
+                        // Task completed successfully
                     }
                     .addOnFailureListener {
                         // Task failed with an exception
                         textStatus.setText("Failed to read the barcode")
                     }
-
-
-
 
 
             }
@@ -101,5 +99,6 @@ class BarcodeScanner:AppCompatActivity() {
         //println(item.barcode)
         return item
     }
+
 
 }

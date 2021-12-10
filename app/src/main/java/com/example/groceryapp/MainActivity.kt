@@ -37,10 +37,10 @@ class MainActivity : AppCompatActivity() {
         val jsonFileStringStore = getJSONDataFromAsset(this, "items.json")
         //TypeToken to get the type of the object
         val items = object : TypeToken<ArrayList<GroceryItem>>() {}.type
-        GroceryItem.groceryStore = Gson().fromJson(jsonFileString, items)
+        GroceryItem.groceryStore = Gson().fromJson(jsonFileStringStore, items)
 
         viewManager = LinearLayoutManager(this)
-        viewAdapter = MyRecyclerAdapter(GroceryItem.groceryList, this)
+        viewAdapter = MyRecyclerAdapter(GroceryItem.groceryStore, this)
 
         recyclerView = findViewById<RecyclerView>(R.id.recycler_view).apply {
             // use this setting to improve performance if you know that changes
