@@ -2,10 +2,11 @@ package com.example.groceryapp
 
 import android.content.Context
 import android.content.Intent
-import android.os.Bundle
 import android.view.View
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.ImageView
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -16,16 +17,43 @@ import com.google.mlkit.vision.barcode.BarcodeScanning
 import com.google.mlkit.vision.common.InputImage
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.net.Uri
+import android.os.Bundle
+import android.provider.MediaStore
 
 class BarcodeScanner:AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var viewAdapter: RecyclerView.Adapter<*>
     private lateinit var viewManager: RecyclerView.LayoutManager
     private var result: GroceryItem = GroceryItem(0,"",0.0f, 0,"","")
+    private val pickImage = 100
+    private var imageUri: Uri? = null
+    private lateinit var barcodeImage: ImageView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.barcode_scanner)
+        barcodeImage = findViewById(R.id.imgBarcode) as ImageView
+        val uploadButton: Button = findViewById(R.id.buttonUpload) as Button
 
+        uploadButton.setOnClickListener{
+            val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
+            startActivityForResult(gallery, pickImage)
+        }
+
+
+    }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == RESULT_OK && requestCode == pickImage) {
+            imageUri = data?.data
+            var uriBitmap:Bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), imageUri);
+
+            barcodeImage.setImageBitmap(uriBitmap)
+
+
+
+        }
     }
     private fun getJSONDataFromAsset(context: Context, filename: String): String? {
         val jsonString: String
@@ -45,12 +73,13 @@ class BarcodeScanner:AppCompatActivity() {
 
     fun onButtonClick(view: View) {
         when (view.id) {
-            R.id.buttonScan -> {
 
-                var myBitmap: Bitmap = BitmapFactory.decodeResource(
-                    getApplicationContext().getResources(),
-                    R.drawable.barcode2
-                );
+
+            R.id.buttonScan -> {
+                val barcodeImage: ImageView = findViewById(R.id.imgBarcode) as ImageView
+                barcodeImage.buildDrawingCache()
+
+                var myBitmap:Bitmap = barcodeImage.getDrawingCache()
                 var textStatus: TextView = findViewById(R.id.txtStatus) as TextView
                 var textItem: TextView = findViewById(R.id.textItem) as TextView
                 // put the bitmap into the InputImage
@@ -99,6 +128,5 @@ class BarcodeScanner:AppCompatActivity() {
         //println(item.barcode)
         return item
     }
-
 
 }
