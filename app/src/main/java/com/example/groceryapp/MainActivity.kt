@@ -104,7 +104,8 @@ class MainActivity : AppCompatActivity() {
 
                 }
             R.id.buttonItem->{
-
+                val intent = Intent(this, ImageScanner::class.java).apply{}
+                startActivity(intent)
             }
         }
     }
