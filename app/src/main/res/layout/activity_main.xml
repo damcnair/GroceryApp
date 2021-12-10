@@ -10,22 +10,26 @@
         android:id="@+id/buttonImage"
         android:layout_width="182dp"
         android:layout_height="70dp"
+        android:layout_marginStart="15dp"
         android:layout_marginEnd="12dp"
-        android:layout_marginBottom="17dp"
+        android:layout_marginBottom="97dp"
         android:onClick="onButtonImage"
         android:text="@string/image_add"
-        app:layout_constraintBottom_toTopOf="@+id/btnCheckout"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/buttonBarcode" />
 
     <Button
         android:id="@+id/buttonBarcode"
         android:layout_width="186dp"
         android:layout_height="68dp"
         android:layout_marginStart="16dp"
-        android:layout_marginBottom="17dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="97dp"
         android:onClick="onButtonClick"
         android:text="@string/barcode_add"
-        app:layout_constraintBottom_toTopOf="@+id/btnCheckout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/buttonImage"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -61,16 +65,6 @@
         app:layout_constraintBottom_toTopOf="@+id/recycler_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/btnCheckout"
-        android:layout_width="409dp"
-        android:layout_height="64dp"
-        android:layout_marginBottom="16dp"
-        android:text="@string/checkout_cart"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
