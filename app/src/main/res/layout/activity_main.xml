@@ -8,29 +8,44 @@
 
     <Button
         android:id="@+id/buttonImage"
-        android:layout_width="182dp"
-        android:layout_height="70dp"
+        android:layout_width="203dp"
+        android:layout_height="67dp"
         android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="12dp"
-        android:layout_marginBottom="97dp"
         android:onClick="onButtonImage"
-        android:text="@string/image_add"
+        android:text="@string/text_add"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/buttonBarcode"
+        app:layout_constraintTop_toBottomOf="@+id/recycler_view" />
+
+    <Button
+        android:id="@+id/buttonItem"
+        android:layout_width="203dp"
+        android:layout_height="72dp"
+        android:layout_marginStart="214dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="24dp"
+        android:onClick="onButtonImage"
+        android:text="@string/item_add"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/buttonBarcode" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonImage" />
 
     <Button
         android:id="@+id/buttonBarcode"
         android:layout_width="186dp"
         android:layout_height="68dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginBottom="97dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="6dp"
         android:onClick="onButtonClick"
         android:text="@string/barcode_add"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/buttonImage"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recycler_view" />
 
     <TextView
         android:id="@+id/textViewRecycle"
