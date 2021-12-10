@@ -29,4 +29,6 @@
     <string name="wait_label_image_scan">Ready to Scan!</string>
     <string name="image_scan_product_text">Found item: %1$s\nPrice: %2$s\nIn Stock: %3$d</string>
     <string name="image_scan_toast_text">Sorry we do not sell that type of item!</string>
+    <string name="text_scan_upload_image">Please upload an image to search</string>
+    <string name="text_scan_toast_text">Sorry we do not sell that type of item!</string>
 </resources>

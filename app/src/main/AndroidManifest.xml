@@ -19,6 +19,11 @@
             android:exported="false"
             android:label="@string/title_activity_barcode"
             android:theme="@style/Theme.GroceryApp.NoActionBar" />
+        <activity
+            android:name=".TextScanner"
+            android:exported="false"
+            android:label="@string/title_activity_barcode"
+            android:theme="@style/Theme.GroceryApp.NoActionBar" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

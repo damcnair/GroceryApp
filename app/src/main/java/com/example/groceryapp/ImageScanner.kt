@@ -1,7 +1,6 @@
 package com.example.groceryapp
 
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -10,12 +9,9 @@ import android.widget.Toast
 import com.google.mlkit.vision.common.InputImage
 import com.google.mlkit.vision.label.ImageLabeling
 import com.google.mlkit.vision.label.defaults.ImageLabelerOptions
-import android.content.Context
 import android.content.Intent
-import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Button
-import java.io.IOException
 import android.net.Uri
 import android.provider.MediaStore
 import android.graphics.drawable.AnimationDrawable
@@ -26,22 +22,22 @@ private val pickImage = 100
 private var imageUri: Uri? = null
 private lateinit var frameAnimation: AnimationDrawable
 private lateinit var scanButton: Button
-private lateinit var imageImage: ImageView
+private lateinit var imageView: ImageView
 
 class ImageScanner : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_image_scanner)
-        val img: ImageView = findViewById(R.id.imgLoad2) as ImageView
+        val img: ImageView = findViewById<ImageView>(R.id.imgLoad2)
         img.setBackgroundResource(R.drawable.loading)
         frameAnimation = img.background as AnimationDrawable
         frameAnimation.start()
 
 
-        scanButton = findViewById(R.id.btnScanImage) as Button
-        val waitLabel: TextView = findViewById(R.id.textIWait2) as TextView
-        imageImage = findViewById(R.id.imageView2) as ImageView
-        val uploadButton: Button = findViewById(R.id.button) as Button
+        scanButton = findViewById<Button>(R.id.btnScanImage)
+        val waitLabel: TextView = findViewById<TextView>(R.id.textIWait2)
+        imageView = findViewById<ImageView>(R.id.imageViewTextScanner)
+        val uploadButton: Button = findViewById<Button>(R.id.button)
 
         uploadButton.setOnClickListener {
             val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
@@ -61,14 +57,14 @@ class ImageScanner : AppCompatActivity() {
             var uriBitmap: Bitmap =
                 MediaStore.Images.Media.getBitmap(this.getContentResolver(), imageUri)
 
-            imageImage.setImageBitmap(uriBitmap)
+            imageView.setImageBitmap(uriBitmap)
 
 
         }
     }
 
     fun onButtonClick(view: View) {
-        val imageImage: ImageView = findViewById(R.id.imageView2) as ImageView
+        val imageImage: ImageView = findViewById(R.id.imageViewTextScanner) as ImageView
         imageImage.buildDrawingCache()
 
         var myBitmap: Bitmap = imageImage.getDrawingCache()

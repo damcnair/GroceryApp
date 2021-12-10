@@ -12,30 +12,56 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.mlkit.vision.common.InputImage
-import com.google.mlkit.vision.label.ImageLabeling
-import com.google.mlkit.vision.label.defaults.ImageLabelerOptions
 import com.google.mlkit.vision.text.TextRecognition
 import com.google.mlkit.vision.text.latin.TextRecognizerOptions
+import java.text.NumberFormat
+import java.util.*
 
 private val pickImage = 100
 private var imageUri: Uri? = null
 
-private lateinit var imageImage: ImageView
+private lateinit var imageView: ImageView
+private lateinit var scanButton: Button
+private lateinit var textView: TextView
+private lateinit var uploadButton: Button
+
 class TextScanner : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_text_scanner)
+        scanButton = findViewById<Button>(R.id.btnScanImage)
+        scanButton.isEnabled = false
+        imageView = findViewById<ImageView>(R.id.imageViewTextScanner)
+        imageView.visibility = View.GONE
+        textView = findViewById<TextView>(R.id.textItem3)
+        textView.text = getString(R.string.text_scan_upload_image)
+        uploadButton = findViewById<Button>(R.id.button)
 
-        imageImage = findViewById(R.id.imageView2) as ImageView
-        val uploadButton: Button = findViewById(R.id.button) as Button
-        uploadButton.setOnClickListener{
+        uploadButton.setOnClickListener {
             val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
             startActivityForResult(gallery, pickImage)
+            textView.text = getString(R.string.wait_label_image_scan)
+            imageView.visibility = View.VISIBLE
+            uploadButton.isEnabled = false
+            scanButton.isEnabled = true
+        }
+
+
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == RESULT_OK && requestCode == pickImage) {
+            imageUri = data?.data
+            var uriBitmap: Bitmap =
+                MediaStore.Images.Media.getBitmap(this.contentResolver, imageUri)
+
+            imageView.setImageBitmap(uriBitmap)
         }
     }
 
     fun onButtonClick(view: View) {
-        val imageImage: ImageView = findViewById(R.id.imageView2) as ImageView
+        val imageImage: ImageView = findViewById(R.id.imageViewTextScanner) as ImageView
         imageImage.buildDrawingCache()
 
         var myBitmap: Bitmap = imageImage.getDrawingCache()
@@ -45,7 +71,6 @@ class TextScanner : AppCompatActivity() {
         val image = InputImage.fromBitmap(myBitmap, 0)
 
         val recognizer = TextRecognition.getClient(TextRecognizerOptions.DEFAULT_OPTIONS)
-//        val labeler = ImageLabeling.getClient(ImageLabelerOptions.DEFAULT_OPTIONS)
 
         recognizer.process(image)
             .addOnSuccessListener { visionText ->
@@ -54,26 +79,40 @@ class TextScanner : AppCompatActivity() {
                     val text = block.text
                     println("Item = $text")
                     if (GroceryItem.groceryStore.find { item ->
-                            text.contains(item.name )
-                    } != null) {
+//                            text.contains(item.name, ignoreCase = true)
+                            item.name.contains(text, ignoreCase = true)
+                        } != null) {
                         //item found!
                         foundItemInList = true
                         val item = GroceryItem.groceryStore.find { item ->
-                            text.contains(item.name )
+//                            text.contains(item.name, ignoreCase = true)
+                            item.name.contains(text, ignoreCase = true)
                         }
                         if (item != null) {
                             println("found item ${item.name}")
                         }
                         textItem.text =
-                            "Found item: ${item!!.name}\nPrice: $${item!!.price}\nIn Stock: ${item!!.quantity}"
+                            getString(
+                                R.string.image_scan_product_text,
+                                item!!.name,
+                                NumberFormat.getCurrencyInstance(
+                                    Locale.getDefault()
+                                ).format(item!!.price),
+                                item!!.quantity
+                            )
                     }
                 }
                 if (!foundItemInList) {
                     Toast.makeText(
                         this,
-                        "Sorry we do not sell that type of item!",
+                        getString(R.string.text_scan_toast_text),
                         Toast.LENGTH_SHORT
                     ).show()
+                    scanButton.isEnabled = false
+                    uploadButton.isEnabled = true
+                    imageView.setImageBitmap(null)
+                    imageView.visibility = View.GONE
+                    textView.text = getString(R.string.text_scan_upload_image)
                 }
             }
             .addOnFailureListener { e ->

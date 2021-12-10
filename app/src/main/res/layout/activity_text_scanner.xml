@@ -21,7 +21,7 @@
         app:layout_constraintTop_toBottomOf="@+id/btnScanImage" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imageViewTextScanner"
         android:layout_width="190dp"
         android:layout_height="341dp"
         android:layout_marginStart="110dp"
@@ -30,8 +30,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button"
-        app:srcCompat="@drawable/gushers" />
+        app:layout_constraintTop_toBottomOf="@+id/button" />
 
     <Button
         android:id="@+id/btnScanImage"
@@ -45,7 +44,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        app:layout_constraintTop_toBottomOf="@+id/imageViewTextScanner" />
 
     <TextView
         android:id="@+id/txtViewScannedItemFound"
