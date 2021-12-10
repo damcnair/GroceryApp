@@ -8,44 +8,36 @@
 
     <Button
         android:id="@+id/buttonImage"
-        android:layout_width="203dp"
-        android:layout_height="67dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="12dp"
+        android:layout_width="409dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="2dp"
         android:onClick="onButtonClick"
         android:text="@string/text_add"
+        app:layout_constraintBottom_toTopOf="@+id/buttonItem"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/buttonBarcode"
-        app:layout_constraintTop_toBottomOf="@+id/recycler_view" />
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/buttonBarcode"
+        android:layout_width="409dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
+        android:onClick="onButtonClick"
+        android:text="@string/barcode_add"
+        app:layout_constraintBottom_toTopOf="@+id/buttonImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/buttonItem"
-        android:layout_width="203dp"
-        android:layout_height="72dp"
-        android:layout_marginStart="214dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginBottom="24dp"
+        android:layout_width="409dp"
+        android:layout_height="52dp"
         android:onClick="onButtonClick"
         android:text="@string/item_add"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonImage" />
-
-    <Button
-        android:id="@+id/buttonBarcode"
-        android:layout_width="186dp"
-        android:layout_height="68dp"
-        android:layout_marginStart="14dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="6dp"
-        android:onClick="onButtonClick"
-        android:text="@string/barcode_add"
-        app:layout_constraintEnd_toStartOf="@+id/buttonImage"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recycler_view" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textViewRecycle"
@@ -57,45 +49,23 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
-        android:layout_width="395dp"
-        android:layout_height="436dp"
-        android:layout_marginStart="18dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="9dp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonImage"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_width="387dp"
+        android:layout_height="466dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="233dp"
         android:layout_height="46dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="85dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="2dp"
         android:text="@string/store_name"
         android:textAlignment="center"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/recycler_view"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/buttonProfile"
-        android:layout_width="161dp"
-        android:layout_height="51dp"
-        android:layout_marginStart="3dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginBottom="73dp"
-        android:onClick="onButtonClick"
-        android:text="@string/view_profile"
-        app:layout_constraintBottom_toTopOf="@+id/recycler_view"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewRecycle" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
