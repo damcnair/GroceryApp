@@ -18,6 +18,9 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 
 class BarcodeScanner:AppCompatActivity() {
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var viewAdapter: RecyclerView.Adapter<*>
+    private lateinit var viewManager: RecyclerView.LayoutManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,41 +52,54 @@ class BarcodeScanner:AppCompatActivity() {
                     R.drawable.barcode2
                 );
                 var textStatus: TextView = findViewById(R.id.txtStatus) as TextView
-                //Find item from grocery items and add to list? copied from main
-                val jsonFileStringStore = getJSONDataFromAsset(this, "items.json")
-                //TypeToken to get the type of the object
-                val items = object : TypeToken<ArrayList<GroceryItem>>() {}.type
-                GroceryItem.groceryStore = Gson().fromJson(jsonFileStringStore, items)
                 var textItem: TextView = findViewById(R.id.textItem) as TextView
                 // put the bitmap into the InputImage
                 val image = InputImage.fromBitmap(myBitmap, 0)
                 // Set up the barcode scanner
                 val scanner = BarcodeScanning.getClient()
-                var barcodeString = ""
+                var barcodeString : String = ""
                 // processing the image
                 val result = scanner.process(image)
                     .addOnSuccessListener { barcodes ->
                         textStatus.setText("Found Barcode: " + barcodes[0].rawValue)
-                        barcodeString = barcodes[0].rawValue
-
+                        var barcodeString : String = barcodes[0].rawValue
+                        val result: GroceryItem
+                        result = returnItem(barcodeString)
+                        println("FOUND" +result.name)
+                        textItem.setText("Found Item: " + result.name)
                             // Task completed successfully
                     }
                     .addOnFailureListener {
                         // Task failed with an exception
                         textStatus.setText("Failed to read the barcode")
                     }
-                for(i in GroceryItem.groceryStore.orEmpty()) {
-                    if (i.barcode == barcodeString) {
-                        textItem.setText("This item is: " + i.name)
-                    }
 
 
 
-                }
+
 
             }
 
         }
+    }
+    fun returnItem(b: String):GroceryItem{
+        //Find item from grocery items and add to list? copied from main
+        val jsonFileStringStore = getJSONDataFromAsset(this, "items.json")
+        //TypeToken to get the type of the object
+        val items = object : TypeToken<ArrayList<GroceryItem>>() {}.type
+        GroceryItem.groceryStore = Gson().fromJson(jsonFileStringStore, items)
+
+        var item: GroceryItem = GroceryItem(0,"",0.0f, 0,"","")
+
+        println(b)
+        for(i in GroceryItem.groceryStore.orEmpty()) {
+            println(i.barcode)
+            if (i.barcode == b) {
+                item = i
+            }
+        }
+        //println(item.barcode)
+        return item
     }
 
 }
