@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">GroceryApp</string>
+    <string name="app_name">Pocket Grocer</string>
     <string name="item_add">Search by Item</string>
     <string name="barcode_add">Search by Barcode</string>
     <string name="store_name">Items in Our Store:</string>

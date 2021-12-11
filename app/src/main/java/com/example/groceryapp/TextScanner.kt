@@ -16,6 +16,7 @@ import com.google.mlkit.vision.text.TextRecognition
 import com.google.mlkit.vision.text.latin.TextRecognizerOptions
 import java.text.NumberFormat
 import java.util.*
+import android.graphics.drawable.AnimationDrawable
 
 private val pickImage = 100
 private var imageUri: Uri? = null
@@ -26,24 +27,30 @@ private lateinit var textView: TextView
 private lateinit var uploadButton: Button
 
 class TextScanner : AppCompatActivity() {
+    private lateinit var frameAnimation :AnimationDrawable
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_text_scanner)
         scanButton = findViewById<Button>(R.id.btnScanImage)
         scanButton.isEnabled = false
         imageView = findViewById<ImageView>(R.id.imageViewTextScanner)
-        imageView.visibility = View.GONE
+
         textView = findViewById<TextView>(R.id.textItem3)
         textView.text = getString(R.string.text_scan_upload_image)
         uploadButton = findViewById<Button>(R.id.button)
-
+        val img:ImageView = findViewById(R.id.imgLoad3) as ImageView
+        img.setBackgroundResource(R.drawable.loading)
+        frameAnimation = img.background as AnimationDrawable
+        frameAnimation.start()
         uploadButton.setOnClickListener {
             val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
             startActivityForResult(gallery, pickImage)
             textView.text = getString(R.string.wait_label_image_scan)
-            imageView.visibility = View.VISIBLE
+
             uploadButton.isEnabled = false
             scanButton.isEnabled = true
+            img.setVisibility(View.GONE)
         }
 
 

@@ -6,6 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".ImageScanner">
 
+    <ImageView
+        android:id="@+id/imgLoad3"
+        android:layout_width="57dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="178dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="176dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewTextScanner"
+        tools:srcCompat="@drawable/tile000" />
+
     <TextView
         android:id="@+id/textItem3"
         android:layout_width="wrap_content"
@@ -22,29 +35,29 @@
 
     <ImageView
         android:id="@+id/imageViewTextScanner"
-        android:layout_width="190dp"
-        android:layout_height="341dp"
+        android:layout_width="244dp"
+        android:layout_height="294dp"
         android:layout_marginStart="110dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="111dp"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button" />
 
     <Button
         android:id="@+id/btnScanImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="142dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="142dp"
+        android:layout_width="402dp"
+        android:layout_height="68dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="1dp"
         android:onClick="onButtonClick"
         android:text="@string/button_scan_image"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.428"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewTextScanner" />
+        app:layout_constraintTop_toBottomOf="@+id/imgLoad3" />
 
     <TextView
         android:id="@+id/txtViewScannedItemFound"
